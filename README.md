@@ -47,6 +47,19 @@ Your `manifest.json` must include the following fields:
 
 The `last_updated` field is an ISO 8601 timestamp used to sort widgets by recency. Update it whenever you publish a new version.
 
+### Keybind actions (optional)
+
+List the actions your widget registers with `widgetHandler:AddAction` under `keybindings`, and the in-game keybind editor shows them under your `display_name`:
+
+```json
+"keybindings": [
+  { "action": "gui_example_toggle", "defaultKeysets": ["Alt+sc_t"] },
+  { "action": "gui_example_select", "alwaysModifier": "any", "defaultKeysets": ["sc_g"] }
+]
+```
+
+Each action is labelled by its command. A player gets each default key once, and one they remove stays removed. `alwaysModifier` (`any` or `shift`) and `icon` are optional.
+
 ## Verify
 
 It is recommended to verify your widget by running `docker compose --profile=tool run --rm builder` before submitting a PR.
